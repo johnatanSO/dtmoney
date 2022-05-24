@@ -25,10 +25,10 @@ export const Container = styled.div`
         color: var(--text-title);
       }
 
-      &.deposito{
+      &.entrada{
         color: var(--green);
       }
-      &.retirada{
+      &.saida{
         color: var(--red);
       }
     }

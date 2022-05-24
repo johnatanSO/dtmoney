@@ -1,14 +1,9 @@
-import React, { useEffect } from "react";
+import { useTransactions } from "../../hooks/useTransactions";
 import { Container } from "./styles";
 
-import { api } from "../../services/api";
-
-
-
 export default function TransactionsTable() {
-  useEffect(() => {
-    api.get("transactions").then((res) => console.log(res.data));
-  }, []);
+
+  const {transactions} = useTransactions();
 
   return (
     <Container>
@@ -22,30 +17,20 @@ export default function TransactionsTable() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Desenvolvimento de website</td>
-            <td className="deposito">R$12.000</td>
-            <td>Desenvolvimento</td>
-            <td>20/05/2022</td>
-          </tr>
-          <tr>
-            <td>Aluguel</td>
-            <td className="retirada">- R$1.000</td>
-            <td>Casa</td>
-            <td>1/05/2022</td>
-          </tr>
-          <tr>
-            <td>Desenvolvimento de website</td>
-            <td>R$12.000</td>
-            <td>Desenvolvimento</td>
-            <td>20/05/2022</td>
-          </tr>
-          <tr>
-            <td>Desenvolvimento de website</td>
-            <td>R$12.000</td>
-            <td>Desenvolvimento</td>
-            <td>20/05/2022</td>
-          </tr>
+          {transactions.map((transaction, key)=>{
+            return (
+              <tr key={key}>
+                <td>{transaction.title}</td>
+                <td className={transaction.type}>
+                  {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(transaction.amount)}
+                </td>
+                <td>{transaction.category}</td>
+                <td>
+                  {new Intl.DateTimeFormat('pt-BR').format(new Date(transaction.date))}
+                </td>
+              </tr>
+            )
+          })}
         </tbody>
       </table>
     </Container>
