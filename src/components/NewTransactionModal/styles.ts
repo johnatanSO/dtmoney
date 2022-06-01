@@ -12,8 +12,10 @@ export const Container = styled.form`
     height: 4rem;
     border-radius: 0.25rem;
 
-    border: 1px solid #d7d7d7;
-    background-color: #e7e9ee;
+    border: 1px solid transparent;
+    background-color: var(--background);
+
+    color: var(--text-body);
 
     font-weight: 400;
     font-size: 1rem;
@@ -24,6 +26,15 @@ export const Container = styled.form`
     & + input {
       margin-top: 1rem;
     }
+    &[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+    }
+    &[type=number] { 
+    -moz-appearance: textfield;
+    appearance: textfield;
+
+}
   }
   button[type="submit"] {
     width: 100%;

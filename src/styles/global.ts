@@ -2,17 +2,17 @@ import {createGlobalStyle} from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   :root{
-    --background: #f0f2f5;
+    --background: rgb(15,15,15);
     --red: #e52e4d;
     --green: #33CC95;
     --blue: #5429cc;
 
     --blue-light: #6933ff;
 
-    --text-title: #363f5f;
-    --text-body: #969cb3;
+    --text-title: rgb(220,220,220);
+    --text-body: rgb(180,180,180);
 
-    --shape: #FFFFFF;
+    --shape: rgb(41,41,41);
   }
 
   *{
@@ -67,11 +67,22 @@ export const GlobalStyle = createGlobalStyle`
   .react-modal-content{
     width: 100%;
     max-width: 576px;
-    background-color: var(--background);
+    background-color: var(--shape);
     padding: 3rem;
     position: relative;
     border-radius: 0.25rem;
     box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    animation: fade-in 0.2s;
+    @keyframes fade-in {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
   }
   .react-modal-close{
     position: absolute;

@@ -4,7 +4,6 @@ import { Container, RadioBox, TransactionTypeContainer } from "./styles";
 import closeImg from "../../assets/Fechar.svg";
 import entradasImg from "../../assets/Entradas.svg";
 import saidasImg from "../../assets/Saidas.svg";
-import { api } from "../../services/api";
 import {useTransactions } from "../../hooks/useTransactions";
 
 
@@ -27,6 +26,11 @@ export function NewTransactionModal({
 
   async function handleCreateNewTransaction(event: FormEvent){
     event.preventDefault();
+
+    if(!title || !amount || !category){
+      alert('Preencha todos os campos!')
+      return;
+    }
 
     await createTransaction({
       title,
@@ -57,7 +61,7 @@ export function NewTransactionModal({
 
         <input value={title} onChange={event=>setTitle(event.target.value)} type="text" placeholder="Título" />
 
-        <input value={amount} onChange={event => setAmount(Number(event.target.value))} type="number" placeholder="Valor" />
+        <input onChange={event => setAmount(Number(event.target.value))} type="number" placeholder="Valor" />
 
 
         <TransactionTypeContainer>
