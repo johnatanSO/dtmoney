@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     --text-title: rgb(220,220,220);
     --text-body: rgb(180,180,180);
 
-    --shape: rgb(41,41,41);
+    --shape: rgb(30,30,30);
   }
 
   *{
